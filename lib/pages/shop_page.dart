@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sneaker_shop/models/shoe.dart';
 
 import '../components/shoe_tile.dart';
+import '../models/cart.dart';
 
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
@@ -13,7 +15,8 @@ class ShopPage extends StatefulWidget {
 class _ShopPageState extends State<ShopPage> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Consumer<Cart>(builder: (context, value, child) => Column(
+
       children: [
         // search bar
         Container(
@@ -55,24 +58,24 @@ class _ShopPageState extends State<ShopPage> {
               Text(
                 "See all",
                 style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
+                TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
               ),
             ],
           ),
         ),
         const SizedBox(height: 10),
 
+        // List of shoes for sale
         Expanded(
           child: ListView.builder(
             itemCount: 4,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              // create a shoe
-              Shoe shoe = Shoe(
-                  name: "Dargre",
-                  price: "240",
-                  description: "cool shoe",
-                  imagePath: "assets/images/dargre.png");
+
+              // get a shoe from shop list
+              Shoe shoe = value.getShoeList()[index];
+
+              // return the shoe
               return ShoeTile(
                 shoe: shoe,
               );
@@ -86,6 +89,7 @@ class _ShopPageState extends State<ShopPage> {
           ),
         )
       ],
+    ),
     );
   }
 }
