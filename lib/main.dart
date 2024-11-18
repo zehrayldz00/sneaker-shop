@@ -11,10 +11,12 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { //2:19:04
+
     return ChangeNotifierProvider(
       create: (context) => Cart(),
       builder: (context, child) => const MaterialApp(
+        debugShowCheckedModeBanner: false,
         home:IntroPage(),
       ),
     );
