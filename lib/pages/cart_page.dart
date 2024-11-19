@@ -8,12 +8,12 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<Cart>( //2.20.59
+    return Consumer<Cart>(
         builder: (context, value, child) => const Padding(
           padding: EdgeInsets.symmetric(horizontal: 25.0),
           child: Column(
                 children: [
-                  Text('My Cart'),
+                  Text('My Cart', style: TextStyle(fontWeight: FontWeight.bold),),
                 ],
               ),
         ));
