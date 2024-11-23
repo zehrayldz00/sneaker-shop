@@ -33,6 +33,7 @@ class _CartItemState extends State<CartItem> {
         subtitle: Text(widget.shoe.price),
         trailing: IconButton(icon: Icon(Icons.delete),
           onPressed: removeItemFromCart,),
+
       )
     );
   }
